@@ -1,25 +1,13 @@
-Для создания нового приложения с именем app_lesson_4, нужно выполнить следующие шаги:
+class Advertisement(models.Model):
+    title = models.CharField(max_length=255)
+    price = models.DecimalField(max_digits=5, decimal_places=2)
 
-Откройте командную строку или терминал в рабочей директории вашего проекта.
-Введите следующую команду для создания нового Django приложения:
+    class Meta:
+        db_table = 'advertisements'
 
-python manage.py startapp app_lesson_4
-Перейдите в файл urls.py в основной директории проекта и добавьте следующий код:
+        class Advertisement(models.Model):
+            title = models.CharField(max_length=255)
+            price = models.DecimalField(max_digits=5, decimal_places=2)
 
-from django.urls import path
-from app_lesson_4.views import lesson_4_view
-
-urlpatterns = [
-    path('lesson_4/', lesson_4_view, name='lesson_4'),
-    # Другие URL-адреса вашего проекта...
-]
-В созданной директории app_lesson_4 откройте файл views.py и добавьте следующий код:
-
-from django.http import HttpResponse
-
-def lesson_4_view(request):
-    return HttpResponse("Домашка по 4 занятию")
-Сохраните файлы и запустите сервер разработки Django, выполнив команду:
-
-python manage.py runserver
-Теперь представление будет доступно по адресу: http://127.0.0.1/lesson_4
+            def __str__(self):
+                return f"Advertisement(id={self.id}, title={self.title}, price={self.price})"
